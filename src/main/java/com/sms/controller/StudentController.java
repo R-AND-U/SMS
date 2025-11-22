@@ -19,8 +19,10 @@ import java.io.IOException;
 @Controller
 public class StudentController {
 
-    @FXML private Label welcomeLabel;
-    @FXML private VBox contentArea;
+    @FXML
+    private Label welcomeLabel;
+    @FXML
+    private VBox contentArea;
 
     private final StudentService studentService;
     private Student currentStudent;
@@ -33,6 +35,7 @@ public class StudentController {
     public void setCurrentStudent(Student student) {
         this.currentStudent = student;
         updateWelcomeMessage();
+        showPersonalInfo(); // 默认显示个人信息
     }
 
     @FXML
@@ -64,44 +67,105 @@ public class StudentController {
     // 菜单点击处理方法
     @FXML
     private void showPersonalInfo() {
-        clearContent();
-        Label label = new Label("个人信息查询功能开发中...");
-        contentArea.getChildren().add(label);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/student/student-personal-info.fxml"));
+            loader.setControllerFactory(JavaFxApplication.getSpringContext()::getBean);
+            VBox personalInfoView = loader.load();
+
+            // 获取控制器并设置当前学生
+            com.sms.controller.student.StudentPersonalInfoController controller = loader.getController();
+            controller.setCurrentStudent(currentStudent);
+
+            contentArea.getChildren().setAll(personalInfoView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("错误", "加载个人信息页面失败: " + e.getMessage());
+        }
     }
 
     @FXML
     private void showCourseSchedule() {
-        clearContent();
-        Label label = new Label("课表查询功能开发中...");
-        contentArea.getChildren().add(label);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/student/student-course-schedule.fxml"));
+            loader.setControllerFactory(JavaFxApplication.getSpringContext()::getBean);
+            VBox courseScheduleView = loader.load();
+
+            com.sms.controller.student.StudentCourseScheduleController controller = loader.getController();
+            controller.setCurrentStudent(currentStudent);
+
+            contentArea.getChildren().setAll(courseScheduleView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("错误", "加载课表查询页面失败: " + e.getMessage());
+        }
     }
 
     @FXML
     private void showCourseSelection() {
-        clearContent();
-        Label label = new Label("选课功能开发中...");
-        contentArea.getChildren().add(label);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/student/student-course-selection.fxml"));
+            loader.setControllerFactory(JavaFxApplication.getSpringContext()::getBean);
+            VBox courseSelectionView = loader.load();
+
+            com.sms.controller.student.StudentCourseSelectionController controller = loader.getController();
+            controller.setCurrentStudent(currentStudent);
+
+            contentArea.getChildren().setAll(courseSelectionView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("错误", "加载选课页面失败: " + e.getMessage());
+        }
     }
 
     @FXML
     private void showGradeQuery() {
-        clearContent();
-        Label label = new Label("成绩查询功能开发中...");
-        contentArea.getChildren().add(label);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/student/student-grades.fxml"));
+            loader.setControllerFactory(JavaFxApplication.getSpringContext()::getBean);
+            VBox gradesView = loader.load();
+
+            com.sms.controller.student.StudentGradesController controller = loader.getController();
+            controller.setCurrentStudent(currentStudent);
+
+            contentArea.getChildren().setAll(gradesView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("错误", "加载成绩查询页面失败: " + e.getMessage());
+        }
     }
 
     @FXML
     private void showVacation() {
-        clearContent();
-        Label label = new Label("请假功能开发中...");
-        contentArea.getChildren().add(label);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/student/student-vacation.fxml"));
+            loader.setControllerFactory(JavaFxApplication.getSpringContext()::getBean);
+            VBox vacationView = loader.load();
+
+            com.sms.controller.student.StudentVacationController controller = loader.getController();
+            controller.setCurrentStudent(currentStudent);
+
+            contentArea.getChildren().setAll(vacationView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("错误", "加载请假页面失败: " + e.getMessage());
+        }
     }
 
     @FXML
     private void showSystemManagement() {
-        clearContent();
-        Label label = new Label("系统管理功能开发中...");
-        contentArea.getChildren().add(label);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/student/student-system-management.fxml"));
+            loader.setControllerFactory(JavaFxApplication.getSpringContext()::getBean);
+            VBox systemManagementView = loader.load();
+
+            com.sms.controller.student.StudentSystemManagementController controller = loader.getController();
+            controller.setCurrentStudent(currentStudent);
+
+            contentArea.getChildren().setAll(systemManagementView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("错误", "加载系统管理页面失败: " + e.getMessage());
+        }
     }
 
     private void clearContent() {

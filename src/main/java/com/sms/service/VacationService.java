@@ -86,4 +86,8 @@ public class VacationService {
         }
         return null;
     }
+
+    public List<Vacation> findByCourseId(Long id) {
+        return vacationRepository.findByCourseId(id);
+    }
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sms.controller.student.StudentGradesController"
+      spacing="20" style="-fx-padding: 20;">
+    <Label text="成绩查询" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="选择学期:"/>
+        <ComboBox fx:id="semesterComboBox" prefWidth="150"/>
+        <Button text="查询" onAction="#handleQuery"/>
+    </HBox>
+
+    <TableView fx:id="gradeTable" prefHeight="400">
+        <columns>
+            <TableColumn text="课程代码" prefWidth="100"/>
+            <TableColumn text="课程名称" prefWidth="200"/>
+            <TableColumn text="学分" prefWidth="80"/>
+            <TableColumn text="平时成绩" prefWidth="80"/>
+            <TableColumn text="期末成绩" prefWidth="80"/>
+            <TableColumn text="总成绩" prefWidth="80"/>
+            <TableColumn text="等级" prefWidth="80"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="20">
+        <Label text="总学分:"/>
+        <Label fx:id="totalCreditsLabel" text="0"/>
+        <Label text="平均分:"/>
+        <Label fx:id="averageScoreLabel" text="0"/>
+        <Label text="GPA:"/>
+        <Label fx:id="gpaLabel" text="0"/>
+    </HBox>
+</VBox>

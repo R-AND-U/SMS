@@ -71,6 +71,7 @@ public class CourseService {
             course.setTeacher(teacherOpt.get());
             return courseRepository.save(course);
         }
+
         return null;
     }
 
@@ -87,4 +88,18 @@ public class CourseService {
         }
         return null;
     }
+
+    public void removeStudentFromCourse(Long id, Long id1) {
+        Optional<Course> courseOpt = courseRepository.findById(id);
+        Optional<Student> studentOpt = studentRepository.findById(id1);
+
+        if (courseOpt.isPresent() && studentOpt.isPresent()) {
+            Course course = courseOpt.get();
+            Student student = studentOpt.get();
+
+            course.getStudents().remove(student);
+            courseRepository.save(course);
+        }
+    }
+
 }

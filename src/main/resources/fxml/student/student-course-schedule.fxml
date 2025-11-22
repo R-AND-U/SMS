@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sms.controller.student.StudentCourseScheduleController"
+      spacing="20" style="-fx-padding: 20;">
+    <Label text="课表查询" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="选择学期:"/>
+        <ComboBox fx:id="semesterComboBox" prefWidth="150"/>
+        <Label text="选择周次:"/>
+        <ComboBox fx:id="weekComboBox" prefWidth="100"/>
+        <Button text="查询" onAction="#handleQuery"/>
+    </HBox>
+
+    <TableView fx:id="courseTable" prefHeight="400">
+        <columns>
+            <TableColumn text="时间/星期" prefWidth="100"/>
+            <TableColumn text="星期一" prefWidth="150"/>
+            <TableColumn text="星期二" prefWidth="150"/>
+            <TableColumn text="星期三" prefWidth="150"/>
+            <TableColumn text="星期四" prefWidth="150"/>
+            <TableColumn text="星期五" prefWidth="150"/>
+        </columns>
+    </TableView>
+</VBox>

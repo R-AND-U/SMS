@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sms.controller.student.StudentEditInfoController">
+    <headerText>
+        修改个人信息
+    </headerText>
+    <content>
+        <GridPane hgap="10" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="100"/>
+                <ColumnConstraints prefWidth="200"/>
+            </columnConstraints>
+
+            <Label text="学号:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label fx:id="studentIdLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="姓名:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label fx:id="nameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="性别:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label fx:id="genderLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="班级:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="classNameField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Label text="电话:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+            <Label text="邮箱:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        </GridPane>
+    </content>
+</DialogPane>

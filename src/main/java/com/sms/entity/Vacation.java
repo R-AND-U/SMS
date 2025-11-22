@@ -1,6 +1,5 @@
 package com.sms.entity;
 
-
 import com.sms.enums.VacationStatus;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -34,6 +33,11 @@ public class Vacation {
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
+    // 添加课程关联
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "approved_by")
     private Teacher approvedBy;
@@ -52,5 +56,4 @@ public class Vacation {
         if (status == null)
             status = VacationStatus.PENDING;
     }
-
 }

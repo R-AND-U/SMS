@@ -13,7 +13,8 @@ import java.util.List;
 @Repository
 public interface VacationRepository extends JpaRepository<Vacation, Long> {
 
-    List<Vacation> findByStudentId(Long studentId);
+    @Query("SELECT v FROM Vacation v WHERE v.student.id = :studentId")
+    List<Vacation> findByStudentId(@Param("studentId") Long studentId);
 
     List<Vacation> findByStatus(VacationStatus status);
 
@@ -27,5 +28,7 @@ public interface VacationRepository extends JpaRepository<Vacation, Long> {
 
     @Query("SELECT v FROM Vacation v WHERE v.createdAt BETWEEN :startDate AND :endDate")
     List<Vacation> findVacationsCreatedBetween(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    List<Vacation> findByCourseId(Long id);
 
 }

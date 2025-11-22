@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sms.controller.teacher.TeacherGradeManagementController"
+      spacing="20" style="-fx-padding: 20;">
+    <Label text="成绩信息管理" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="学期:"/>
+        <ComboBox fx:id="semesterComboBox" prefWidth="150"/>
+        <Label text="班级:"/>
+        <ComboBox fx:id="classComboBox" prefWidth="150"/>
+        <Label text="课程:"/>
+        <ComboBox fx:id="courseComboBox" prefWidth="150"/>
+        <Button text="查询" onAction="#handleQuery"/>
+        <Button text="导入成绩" onAction="#handleImport"/>
+        <Button text="导出成绩" onAction="#handleExport"/>
+    </HBox>
+
+    <TableView fx:id="gradeTable" prefHeight="400">
+        <columns>
+            <TableColumn text="学号" prefWidth="100"/>
+            <TableColumn text="姓名" prefWidth="100"/>
+            <TableColumn text="班级" prefWidth="150"/>
+            <TableColumn text="平时成绩" prefWidth="100"/>
+            <TableColumn text="期末成绩" prefWidth="100"/>
+            <TableColumn text="总成绩" prefWidth="100"/>
+            <TableColumn text="操作" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>

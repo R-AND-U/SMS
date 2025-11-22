@@ -45,4 +45,10 @@ public abstract class UserService<T extends User, R extends UserRepository<T>> {
     public boolean existsByEmail(String email) {
         return repository.existsByEmail(email);
     }
+
+    public boolean isUsernameAvailable(String username, Long currentUserId) {
+        Optional<T> existingUser = findByName(username);
+        return existingUser.isEmpty() || existingUser.get().getId().equals(currentUserId);
+    }
+
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sms.controller.student.StudentVacationController"
+      spacing="20" style="-fx-padding: 20;">
+    <Label text="请假申请" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints prefWidth="100"/>
+            <ColumnConstraints prefWidth="200"/>
+        </columnConstraints>
+
+        <Label text="开始日期:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <DatePicker fx:id="startDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="结束日期:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <DatePicker fx:id="endDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="请假类型:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="vacationTypeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="选择课程:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <ComboBox fx:id="courseComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3"/> <!-- 确保这个控件存在 -->
+
+        <Label text="请假原因:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextArea fx:id="reasonTextArea" GridPane.columnIndex="1" GridPane.rowIndex="4" prefRowCount="3"/>
+    </GridPane>
+
+    <Button text="提交申请" onAction="#handleSubmit" style="-fx-pref-width: 100;"/>
+
+    <Label text="请假记录" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+    <TableView fx:id="vacationTable" prefHeight="300">
+        <columns>
+            <TableColumn text="开始日期" prefWidth="100"/>
+            <TableColumn text="结束日期" prefWidth="100"/>
+            <TableColumn text="类型" prefWidth="100"/>
+            <TableColumn text="课程" prefWidth="150"/>
+            <TableColumn text="原因" prefWidth="200"/>
+            <TableColumn text="状态" prefWidth="100"/>
+            <TableColumn text="审批人" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>

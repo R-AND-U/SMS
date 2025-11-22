@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sms.controller.student.StudentCourseSelectionController"
+      spacing="20" style="-fx-padding: 20;">
+    <Label text="选课系统" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="课程搜索:"/>
+        <TextField fx:id="searchField" promptText="输入课程名称或代码" prefWidth="200"/>
+        <Button text="搜索" onAction="#handleSearch"/>
+        <Button text="重置" onAction="#handleReset"/>
+    </HBox>
+
+    <TableView fx:id="courseTable" prefHeight="300">
+        <columns>
+            <TableColumn text="课程代码" prefWidth="100"/>
+            <TableColumn text="课程名称" prefWidth="200"/>
+            <TableColumn text="授课教师" prefWidth="100"/>
+            <TableColumn text="学分" prefWidth="80"/>
+            <TableColumn text="容量" prefWidth="80"/>
+            <TableColumn text="操作" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <Label text="已选课程" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+    <TableView fx:id="selectedCourseTable" prefHeight="200">
+        <columns>
+            <TableColumn text="课程代码" prefWidth="100"/>
+            <TableColumn text="课程名称" prefWidth="200"/>
+            <TableColumn text="授课教师" prefWidth="100"/>
+            <TableColumn text="学分" prefWidth="80"/>
+            <TableColumn text="操作" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sms.controller.teacher.TeacherAttendanceManagementController"
+      spacing="20" style="-fx-padding: 20;">
+    <Label text="考勤管理" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="日期:"/>
+        <DatePicker fx:id="datePicker" prefWidth="150"/>
+        <Label text="班级:"/>
+        <ComboBox fx:id="classComboBox" prefWidth="150"/>
+        <Label text="课程:"/>
+        <ComboBox fx:id="courseComboBox" prefWidth="150"/>
+        <Button text="查询" onAction="#handleQuery"/>
+        <Button text="记录考勤" onAction="#handleRecordAttendance"/>
+    </HBox>
+
+    <TableView fx:id="attendanceTable" prefHeight="400">
+        <columns>
+            <TableColumn text="学号" prefWidth="100"/>
+            <TableColumn text="姓名" prefWidth="100"/>
+            <TableColumn text="班级" prefWidth="150"/>
+            <TableColumn text="考勤状态" prefWidth="100"/>
+            <TableColumn text="备注" prefWidth="200"/>
+            <TableColumn text="操作" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>

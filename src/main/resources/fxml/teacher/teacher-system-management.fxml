@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sms.controller.teacher.TeacherSystemManagementController"
+      spacing="20" style="-fx-padding: 20;">
+    <Label text="系统管理" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #f5f5f5; -fx-border-color: #ddd; -fx-border-radius: 5;">
+        <Label text="修改用户名" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+        <GridPane hgap="10" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints prefWidth="200"/>
+            </columnConstraints>
+
+            <Label text="当前用户名:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label fx:id="currentUsernameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="新用户名:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="newUsernameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="确认密码:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        </GridPane>
+
+        <Button text="修改用户名" onAction="#handleChangeUsername" style="-fx-pref-width: 120;"/>
+    </VBox>
+
+    <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #f5f5f5; -fx-border-color: #ddd; -fx-border-radius: 5;">
+        <Label text="修改密码" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+        <GridPane hgap="10" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints prefWidth="200"/>
+            </columnConstraints>
+
+            <Label text="当前密码:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <PasswordField fx:id="currentPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="新密码:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <PasswordField fx:id="newPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="确认新密码:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <PasswordField fx:id="confirmNewPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        </GridPane>
+
+        <Button text="修改密码" onAction="#handleChangePassword" style="-fx-pref-width: 120;"/>
+    </VBox>
+
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;"/>
+</VBox>
