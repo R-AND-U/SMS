@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sms.controller.TeacherController">
+
+    <!-- 头部 -->
+    <top>
+        <HBox style="-fx-background-color: #2c3e50; -fx-padding: 10 20;" spacing="20" alignment="CENTER_LEFT">
+            <Label text="学生管理系统" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="welcomeLabel" text="欢迎您，" style="-fx-text-fill: white;"/>
+            <Button text="登出" onAction="#handleLogout" style="-fx-text-fill: white; -fx-background-color: #e74c3c;"/>
+        </HBox>
+    </top>
+
+    <!-- 左侧菜单 -->
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #34495e; -fx-padding: 20; -fx-pref-width: 200;">
+            <Label text="导航菜单" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
+            <Button text="学生信息管理" onAction="#showStudentManagement" style="-fx-pref-width: 160;"/>
+            <Button text="考勤管理" onAction="#showAttendanceManagement" style="-fx-pref-width: 160;"/>
+            <Button text="请假信息管理" onAction="#showVacationManagement" style="-fx-pref-width: 160;"/>
+            <Button text="成绩信息管理" onAction="#showGradeManagement" style="-fx-pref-width: 160;"/>
+            <Button text="系统管理" onAction="#showSystemManagement" style="-fx-pref-width: 160;"/>
+        </VBox>
+    </left>
+
+    <!-- 右侧内容区 -->
+    <center>
+        <VBox fx:id="contentArea" alignment="TOP_LEFT" spacing="20" style="-fx-padding: 20;">
+            <Label text="欢迎使用教师管理系统" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+            <Label text="请从左侧菜单选择功能" style="-fx-font-size: 14; -fx-text-fill: #666;"/>
+        </VBox>
+    </center>
+</BorderPane>

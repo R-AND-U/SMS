@@ -1,0 +1,30 @@
+/* styles.css */
+.radio-button {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 14px;
+}
+
+.radio-button:selected {
+    -fx-text-fill: #3498db;
+    -fx-font-weight: bold;
+}
+
+.toggle-button {
+    -fx-background-color: #ecf0f1;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.login-container {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}

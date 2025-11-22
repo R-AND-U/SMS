@@ -1,0 +1,35 @@
+server:
+    port: 8080
+    servlet:
+        context-path: /
+
+spring:
+    main:
+        allow-circular-references: false
+    application:
+        name: SMS-Applciation
+        ui:
+            title: SMS-Applciation
+    datasource:
+        url: jdbc:mysql://localhost:3306/sms?useSSL=false
+        username: root
+        password: 135246qq
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                format_sql: true
+
+logging:
+    level:
+        com.sms: DEBUG
+        org.hibernate.sql: DEBUG
+        type:
+            description:
+                sql:
+                    BasicBinder: TRACE
+    pattern:
+        console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

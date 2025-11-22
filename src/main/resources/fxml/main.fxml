@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sms.controller.MainController">
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="学生管理系统" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+            <Button text="进入系统" onAction="#handleEnterSystem" style="-fx-font-size: 16; -fx-padding: 10 20;"/>
+        </VBox>
+    </center>
+</BorderPane>
