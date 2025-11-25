@@ -23,11 +23,16 @@ import java.util.stream.Collectors;
 @Controller
 public class TeacherVacationManagementController {
 
-    @FXML private ComboBox<VacationStatus> statusComboBox;
-    @FXML private ComboBox<String> classComboBox;
-    @FXML private ComboBox<Course> courseComboBox;
-    @FXML private TextField nameField;
-    @FXML private TableView<Vacation> vacationTable;
+    @FXML
+    private ComboBox<VacationStatus> statusComboBox;
+    @FXML
+    private ComboBox<String> classComboBox;
+    @FXML
+    private ComboBox<Course> courseComboBox;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TableView<Vacation> vacationTable;
 
     @Autowired
     private VacationService vacationService;
@@ -104,7 +109,7 @@ public class TeacherVacationManagementController {
         startDateCol.setCellValueFactory(cellData -> {
             if (cellData.getValue().getStartDate() != null) {
                 return new SimpleStringProperty(
-                    cellData.getValue().getStartDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                        cellData.getValue().getStartDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
                 );
             } else {
                 return new SimpleStringProperty("");
@@ -115,7 +120,7 @@ public class TeacherVacationManagementController {
         endDateCol.setCellValueFactory(cellData -> {
             if (cellData.getValue().getEndDate() != null) {
                 return new SimpleStringProperty(
-                    cellData.getValue().getEndDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                        cellData.getValue().getEndDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
                 );
             } else {
                 return new SimpleStringProperty("");
@@ -184,16 +189,20 @@ public class TeacherVacationManagementController {
         actionCol.setPrefWidth(150);
 
         vacationTable.getColumns().addAll(studentIdCol, studentNameCol, classNameCol, courseNameCol,
-                                         startDateCol, endDateCol, reasonCol, statusCol, actionCol);
+                startDateCol, endDateCol, reasonCol, statusCol, actionCol);
         vacationTable.setItems(vacationData);
     }
 
     private String getStatusDisplayName(String status) {
         switch (status) {
-            case "PENDING": return "待审批";
-            case "APPROVED": return "已批准";
-            case "REJECTED": return "已拒绝";
-            default: return status;
+            case "PENDING":
+                return "待审批";
+            case "APPROVED":
+                return "已批准";
+            case "REJECTED":
+                return "已拒绝";
+            default:
+                return status;
         }
     }
 
@@ -210,6 +219,32 @@ public class TeacherVacationManagementController {
                 courseComboBox.getItems().clear();
                 courseComboBox.getItems().add(null); // 添加一个空选项表示全部课程
                 courseComboBox.getItems().addAll(courses);
+
+                courseComboBox.setCellFactory(_ -> new ListCell<>() {
+                    @Override
+                    protected void updateItem(Course course, boolean empty) {
+                        super.updateItem(course, empty);
+                        if (empty || course == null)
+                            setText(null);
+
+                        else
+                            setText(course.getName());
+                    }
+                });
+
+                courseComboBox.setButtonCell(new ListCell<>() {
+                    @Override
+                    protected void updateItem(Course course, boolean empty) {
+                        super.updateItem(course, empty);
+                        if (empty || course == null)
+                            setText(null);
+
+                        else
+                            setText(course.getName()); // 假设Course类有一个getName()方法
+
+                    }
+                });
+
                 courseComboBox.getSelectionModel().select(0);
                 System.out.println("加载了 " + courses.size() + " 门课程");
             } catch (Exception e) {

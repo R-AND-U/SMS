@@ -24,10 +24,14 @@ import java.util.stream.Collectors;
 @Controller
 public class TeacherGradeManagementController {
 
-    @FXML private ComboBox<String> semesterComboBox;
-    @FXML private ComboBox<String> classComboBox;
-    @FXML private ComboBox<Course> courseComboBox;
-    @FXML private TableView<Grade> gradeTable;
+    @FXML
+    private ComboBox<String> semesterComboBox;
+    @FXML
+    private ComboBox<String> classComboBox;
+    @FXML
+    private ComboBox<Course> courseComboBox;
+    @FXML
+    private TableView<Grade> gradeTable;
 
     @Autowired
     private GradeService gradeService;
@@ -65,15 +69,15 @@ public class TeacherGradeManagementController {
 
         TableColumn<Grade, String> studentIdCol = new TableColumn<>("学号");
         studentIdCol.setCellValueFactory(cellData ->
-            new SimpleStringProperty(cellData.getValue().getStudent().getStudentId()));
+                new SimpleStringProperty(cellData.getValue().getStudent().getStudentId()));
 
         TableColumn<Grade, String> studentNameCol = new TableColumn<>("姓名");
         studentNameCol.setCellValueFactory(cellData ->
-            new SimpleStringProperty(cellData.getValue().getStudent().getName()));
+                new SimpleStringProperty(cellData.getValue().getStudent().getName()));
 
         TableColumn<Grade, String> classNameCol = new TableColumn<>("班级");
         classNameCol.setCellValueFactory(cellData ->
-            new SimpleStringProperty(cellData.getValue().getStudent().getClassName()));
+                new SimpleStringProperty(cellData.getValue().getStudent().getClassName()));
 
         TableColumn<Grade, Double> usualScoreCol = new TableColumn<>("平时成绩");
         usualScoreCol.setCellValueFactory(new PropertyValueFactory<>("usualScore"));
@@ -143,7 +147,7 @@ public class TeacherGradeManagementController {
         });
 
         gradeTable.getColumns().addAll(studentIdCol, studentNameCol, classNameCol,
-                                     usualScoreCol, examScoreCol, totalScoreCol, gradeLevelCol, actionCol);
+                usualScoreCol, examScoreCol, totalScoreCol, gradeLevelCol, actionCol);
         gradeTable.setItems(gradeData);
     }
 
@@ -158,9 +162,35 @@ public class TeacherGradeManagementController {
                 List<Course> courses = courseService.findByTeacherId(currentTeacher.getId());
                 courseComboBox.getItems().clear();
                 courseComboBox.getItems().addAll(courses);
-                if (!courses.isEmpty()) {
+
+                courseComboBox.setCellFactory(_ -> new ListCell<>() {
+                    @Override
+                    protected void updateItem(Course course, boolean empty) {
+                        super.updateItem(course, empty);
+                        if (empty || course == null)
+                            setText(null);
+
+                        else
+                            setText(course.getName());
+                    }
+                });
+
+                courseComboBox.setButtonCell(new ListCell<>() {
+                    @Override
+                    protected void updateItem(Course course, boolean empty) {
+                        super.updateItem(course, empty);
+                        if (empty || course == null)
+                            setText(null);
+
+                        else
+                            setText(course.getName()); // 假设Course类有一个getName()方法
+
+                    }
+                });
+
+                if (!courses.isEmpty())
                     courseComboBox.getSelectionModel().select(0);
-                }
+
             } catch (Exception e) {
                 System.err.println("加载课程失败: " + e.getMessage());
                 e.printStackTrace();
@@ -250,9 +280,9 @@ public class TeacherGradeManagementController {
             if (dialogButton == ButtonType.OK) {
                 try {
                     Double usualScore = usualScoreField.getText().isEmpty() ? null :
-                                      Double.parseDouble(usualScoreField.getText());
+                            Double.parseDouble(usualScoreField.getText());
                     Double examScore = examScoreField.getText().isEmpty() ? null :
-                                     Double.parseDouble(examScoreField.getText());
+                            Double.parseDouble(examScoreField.getText());
 
                     grade.setUsualScore(usualScore);
                     grade.setExamScore(examScore);

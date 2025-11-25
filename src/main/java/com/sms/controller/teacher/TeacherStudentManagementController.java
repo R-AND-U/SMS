@@ -9,10 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -91,6 +88,32 @@ public class TeacherStudentManagementController {
                 courseComboBox.getItems().clear();
                 courseComboBox.getItems().add(null); // 添加空选项表示全部课程
                 courseComboBox.getItems().addAll(courses);
+
+                courseComboBox.setCellFactory(_ -> new ListCell<>() {
+                    @Override
+                    protected void updateItem(Course course, boolean empty) {
+                        super.updateItem(course, empty);
+                        if (empty || course == null)
+                            setText(null);
+
+                        else
+                            setText(course.getName());
+                    }
+                });
+
+                courseComboBox.setButtonCell(new ListCell<>() {
+                    @Override
+                    protected void updateItem(Course course, boolean empty) {
+                        super.updateItem(course, empty);
+                        if (empty || course == null)
+                            setText(null);
+
+                        else
+                            setText(course.getName());
+
+                    }
+                });
+
                 courseComboBox.getSelectionModel().select(0);
             } catch (Exception e) {
                 System.err.println("加载课程失败: " + e.getMessage());
