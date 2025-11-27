@@ -38,6 +38,9 @@
    cd SMS
    mvn spring-boot:run
    ```
+   
+> [!NOTE]
+> 如果在IntelliJ IDEA中运行，请在IDE设置中将项目默认运行配置的VM options设置为`--module-path "/path/to/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml`。
 
 ## 贡献指南
 
